@@ -144,12 +144,21 @@ a { text-decoration: none; }
 .visit-section .eyebrow { justify-content:center; }
 .visit-section p { max-width:530px; margin:0 auto 25px; color:var(--muted-foreground); font-size:14px; }
 .visit-address { margin-top:21px; display:flex; justify-content:center; gap:7px; font-size:11px; color:var(--muted-foreground); }
-.site-footer { background:var(--footer); color:var(--footer-text); padding:39px 0 19px; }
-.footer-top { display:flex; align-items:center; justify-content:space-between; gap:25px; padding-bottom:29px; }
-.footer-brand { font-family:var(--font-heading); font-size:28px; }
-.footer-tagline { font-size:11px; opacity:.7; }
-.footer-links { display:flex; align-items:center; gap:25px; font-size:12px; }
-.footer-links a { display:flex; align-items:center; gap:8px; }
+.site-footer { background:var(--footer); color:var(--footer-text); padding:52px 0 19px; }
+.footer-grid { display:grid; grid-template-columns:1.4fr 1fr 1.3fr; gap:48px; padding-bottom:36px; }
+.footer-brand { font-family:var(--font-heading); font-size:30px; }
+.footer-brand em { font-style:italic; color:var(--warm, #F2AC7E); }
+.footer-tagline { font-size:13px; line-height:1.65; opacity:.78; max-width:34ch; margin:12px 0 18px; }
+.footer-rating { display:flex; align-items:center; gap:10px; font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; opacity:.9; }
+.footer-nav, .footer-contact { display:flex; flex-direction:column; gap:13px; font-size:13.5px; }
+.footer-nav strong, .footer-contact strong { font-family:var(--font-heading); font-size:15px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:6px; opacity:.95; }
+.footer-nav a { opacity:.82; transition:opacity .2s; }
+.footer-nav a:hover { opacity:1; }
+.footer-contact a, .footer-address { display:flex; align-items:flex-start; gap:9px; opacity:.88; line-height:1.5; }
+.footer-contact a:hover { opacity:1; }
+.footer-contact svg { flex-shrink:0; margin-top:2px; }
+.footer-icon { width:16px; height:16px; }
+.footer-note { font-size:12px; opacity:.6; line-height:1.6; margin-top:4px; }
 .footer-bottom { display:flex; justify-content:space-between; gap:20px; padding-top:17px; border-top:1px solid color-mix(in oklch,var(--footer-text) 20%,transparent); font-size:10px; opacity:.65; }
 .floating-whatsapp { position:fixed; bottom:22px; right:24px; z-index:30; width:52px; height:52px; border-radius:50%; box-shadow:var(--shadow-soft); padding:0; }
 .mobile-nav { background:var(--background); position:absolute; top:100%; left:0; right:0; padding:20px 24px; z-index:40; border-bottom:1px solid var(--border); display:flex; flex-direction:column; gap:18px; }
@@ -190,7 +199,7 @@ a { text-decoration: none; }
  .section { padding-top:54px; padding-bottom:54px; } .section h2 { font-size:38px; } .about-grid,.team-grid { grid-template-columns:1fr; gap:28px; }
  .care-grid,.review-grid,.faq-layout { grid-template-columns:1fr; gap:28px; } .structure-grid { gap:12px; } .structure-card { padding:20px; } .structure-card h3 { font-size:23px; } .gallery-grid { grid-template-columns:1fr 1fr; gap:12px; } .gallery-item figcaption { left:12px; bottom:9px; font-size:10px; } .gallery-cta { margin-top:22px; } .care-card { padding:26px; } .care-icon { margin-bottom:19px; } .section-heading { margin-bottom:29px; } .team-photo { aspect-ratio:1.2; }
  .team-copy { padding-top:5px; } .review-card { padding:25px; } .rating { flex-wrap:wrap; } .visit-address { text-align:center; max-width:300px; margin-left:auto; margin-right:auto; } .visit-address svg { flex-shrink:0; }
- .footer-top { align-items:flex-start; flex-direction:column; } .footer-bottom { flex-direction:column; gap:6px; padding-right:45px; } .footer-links { flex-wrap:wrap; gap:18px; } .floating-whatsapp { right:17px; bottom:17px; }
+ .footer-grid { grid-template-columns:1fr; gap:34px; } .footer-bottom { flex-direction:column; gap:6px; padding-right:45px; } .floating-whatsapp { right:17px; bottom:17px; }
 }
 @media (max-width:420px) { .structure-grid { grid-template-columns:1fr; } .brand-name { font-size:20px; } .brand { gap:7px; } .hero-cta { max-width:100%; font-size:12px; padding-left:16px; padding-right:16px; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } * { transition:none !important; } }
