@@ -11,6 +11,6 @@
 
 - Keep the institutional website as one index route with anchored sections; the content is a single continuous visit-to-contact journey.
 - Keep contact destinations and the prefilled message centralized in one browser-safe module; all contact buttons must use the same destination.
-- Open WhatsApp outside embedded previews, using WhatsApp Web on desktop and the app-compatible short link on mobile; this avoids WhatsApp's frame-blocking response.
+- Open WhatsApp via the wa.me short link in a new top-level tab (target="_blank"); wa.me routes to the app on mobile and WhatsApp Web on desktop, avoiding the frame-blocking response of api.whatsapp.com/web.whatsapp.com in embedded previews.
 - Use native details/summary for the anchored FAQ section; this provides accessible disclosure without a client-only dependency.
 - Use uploaded asset pointers for brand and team photography, and only publish testimonials transcribed from supplied evidence; this preserves authentic identity and avoids fabricated social proof.
