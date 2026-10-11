@@ -1,0 +1,2 @@
+export const whatsappUrl = `https://wa.me/5511910950792?text=${encodeURIComponent("Olá! Tenho interesse em conhecer o Recanto Dona Vida. Gostaria de saber mais sobre os cuidados, valores e agendar uma visita à casa de repouso.")}`;
+export const instagramUrl = "https://www.instagram.com/recantodonavida/";
