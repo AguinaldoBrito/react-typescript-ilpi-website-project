@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { whatsappUrl, instagramUrl } from "@/lib/contact";
+import { whatsappUrl, instagramUrl, openWhatsApp } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
 import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
@@ -29,10 +29,18 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
   return <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M20.5 11.8a8.6 8.6 0 0 1-12.7 7.5L3 20.7l1.4-4.6A8.6 8.6 0 1 1 20.5 11.8Z"/><path d="M8.1 7.7c.3-.5.7-.5 1-.1l1 1.7c.2.4-.1.8-.6 1.3.6 1.3 1.6 2.3 3 2.9.5-.6.8-.9 1.2-.7l1.7.8c.5.3.5.8.2 1.2-.7 1-1.8 1-3 .5-2.6-1-4.6-3-5.3-5.2-.3-.9.2-1.8.8-2.4Z"/></svg>;
 }
 function Contact({ children, warm = false, className = "" }: { children: React.ReactNode; warm?: boolean; className?: string }) {
-  return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
+  return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} onClick={openWhatsApp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
 }
 function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
-const nav = [{ href: "#sobre", label: "Nosso recanto" }, { href: "#cuidados", label: "Nossos cuidados" }, { href: "#ambientes", label: "Nossos ambientes" }, { href: "#equipe", label: "Nossa equipe" }, { href: "#depoimentos", label: "Depoimentos" }];
+const nav = [{ href: "#inicio", label: "Início" }, { href: "#sobre", label: "Sobre" }, { href: "#cuidados", label: "Cuidados" }, { href: "#equipe", label: "Equipe" }, { href: "#ambientes", label: "Estrutura" }, { href: "#depoimentos", label: "Depoimentos" }, { href: "#duvidas", label: "Dúvidas" }];
+const questions = [
+  { question: "Como posso conhecer o Recanto Dona Vida?", answer: "Converse com nossa equipe pelo WhatsApp para combinar uma visita. Você poderá conhecer os ambientes, conversar pessoalmente e tirar suas dúvidas sobre o acolhimento do seu familiar." },
+  { question: "Quem são as responsáveis pelo cuidado?", answer: "As proprietárias são enfermeiras formadas, e nossas funcionárias têm mais de 10 anos de experiência no ramo. O cuidado une conhecimento profissional, atenção e respeito à história de cada pessoa." },
+  { question: "Meu familiar tem Alzheimer. Podemos conversar?", answer: "Sim. Nossa história começou com o desejo de uma das proprietárias de acolher sua mãe, que vive com Alzheimer. Conte à equipe sobre a condição e as necessidades do seu familiar para conversar sobre as possibilidades de acolhimento." },
+  { question: "A casa tem quartos individuais e compartilhados?", answer: "Sim, há ambientes individuais e compartilhados, apresentados nas fotos da nossa casa. Consulte a equipe sobre a disponibilidade e a acomodação mais adequada ao seu familiar." },
+  { question: "Quais são os valores e o que está incluído?", answer: "Converse diretamente com a equipe sobre os valores, os cuidados disponíveis e o que está incluído na hospedagem. Assim, você poderá avaliar as opções considerando as necessidades do seu familiar." },
+  { question: "Onde fica o Recanto Dona Vida?", answer: "Estamos na Rua Campo Comprido, 33, Vila Romero, São Paulo – SP, CEP 02469-120. Fale conosco para combinar sua visita." },
+];
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,9 +49,10 @@ function Index() {
       <div className="container-wide header-inner">
         <a className="brand" href="#inicio" aria-label="Recanto Dona Vida — início"><img src={logo.url} alt="Logotipo Recanto Dona Vida"/><span className="brand-name">Recanto Dona Vida<small>Casa de repouso para idosos</small></span></a>
         <nav className="desktop-nav" aria-label="Navegação principal">{nav.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
-        <Contact className="contact-button header-contact">Agende uma visita</Contact>
+        <Contact className="contact-button header-contact">Falar no WhatsApp</Contact>
         <Button variant="navigation" size="icon" className="mobile-menu-button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</Button>
       </div>
+      <nav className="compact-header-nav" aria-label="Seções do site">{nav.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
       {menuOpen && <nav className="mobile-nav" aria-label="Navegação celular">{nav.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>)}<Contact>Agende uma visita</Contact></nav>}
     </header>
     <main>
@@ -65,7 +74,7 @@ function Index() {
       </div></div>
       <section id="sobre" className="section container-wide about-grid">
         <div className="about-title"><div className="eyebrow">Bem-vindo ao nosso recanto</div><h2>Onde a vida é cuidada<br/><em>com carinho.</em></h2></div>
-        <div className="about-copy"><p>Escolher um lar para quem você ama é uma decisão que pede confiança. No Recanto Dona Vida, acolhemos cada idoso com respeito à sua história, ao seu tempo e àquilo que o faz se sentir bem.</p><p>Somos uma Instituição de Longa Permanência para Idosos (ILPI), conduzida por proprietárias enfermeiras e uma equipe experiente. Aqui, o cuidado profissional se encontra com o afeto de um verdadeiro lar.</p><Button asChild variant="link" className="text-link p-0 h-auto"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Conheça de perto esse cuidado <ArrowRight size={16}/></a></Button></div>
+        <div className="about-copy"><p>Escolher um lar para quem você ama é uma decisão que pede confiança. No Recanto Dona Vida, acolhemos cada idoso com respeito à sua história, ao seu tempo e àquilo que o faz se sentir bem.</p><p>Somos uma Instituição de Longa Permanência para Idosos (ILPI), conduzida por proprietárias enfermeiras e uma equipe experiente. Aqui, o cuidado profissional se encontra com o afeto de um verdadeiro lar.</p><Button asChild variant="link" className="text-link p-0 h-auto"><a href={whatsappUrl} onClick={openWhatsApp} target="_blank" rel="noopener noreferrer">Conheça de perto esse cuidado <ArrowRight size={16}/></a></Button></div>
       </section>
       <section id="cuidados" className="section care-section"><div className="container-wide">
         <div className="section-heading"><div className="eyebrow">Carinho em cada detalhe</div><h2>O bem-estar de quem você ama,<br/><em>no centro de tudo.</em></h2><p>Mais do que acolher, cuidar com presença, sensibilidade e respeito.</p></div>
@@ -73,6 +82,9 @@ function Index() {
           <article className="care-card"><div className="care-icon"><Stethoscope size={24}/></div><h3>Cuidado com experiência</h3><p>Proprietárias enfermeiras formadas e funcionárias com mais de 10 anos de experiência no cuidado de idosos. Conhecimento que inspira confiança.</p></article>
           <article className="care-card"><div className="care-icon"><HeartHandshake size={24}/></div><h3>Atenção com afeto</h3><p>Um olhar atento para cada pessoa, acolhendo sua história e suas necessidades. Porque carinho, escuta e respeito também fazem parte do cuidar.</p></article>
           <article className="care-card"><div className="care-icon"><Leaf size={24}/></div><h3>Aconchego de um lar</h3><p>Um lugar para criar vínculos e se sentir pertencente. Valorizamos a proximidade com as famílias e o cuidado que gostaríamos para os nossos.</p></article>
+          <article className="care-card"><div className="care-icon"><Home size={24}/></div><h3>Uma história de família</h3><p>Nosso recanto nasceu do desejo de acolher uma mãe com Alzheimer. Uma história que inspira o olhar sensível para cada idoso e sua família.</p></article>
+          <article className="care-card"><div className="care-icon"><Users size={24}/></div><h3>Espaços para conviver</h3><p>Sala de estar, jardim e áreas de convivência compõem nossa casa. Ambientes para estar junto, criar vínculos e compartilhar momentos.</p></article>
+          <article className="care-card"><div className="care-icon"><MessageCircle size={24}/></div><h3>Escuta para a família</h3><p>Uma decisão importante merece uma conversa acolhedora. Conte sobre quem você ama e tire suas dúvidas com nossa equipe.</p></article>
         </div>
       </div></section>
       <section id="ambientes" className="section gallery-section"><div className="container-wide">
@@ -85,6 +97,12 @@ function Index() {
           <figure className="gallery-item"><img src={ambConvivencia.url} loading="lazy" alt="Área coberta de convivência ao lado da piscina"/><figcaption>Área de convivência</figcaption></figure>
           <figure className="gallery-item"><img src={ambRefeicoes.url} loading="lazy" alt="Mesa de refeições na área coberta e jardim"/><figcaption>Refeições ao ar livre</figcaption></figure>
           <figure className="gallery-item"><img src={ambQuartoIndividual.url} loading="lazy" alt="Quarto individual claro e silencioso"/><figcaption>Quarto individual</figcaption></figure>
+        </div>
+        <div className="structure-grid">
+          <article className="structure-card"><BedDouble/><h3>Quartos individuais e compartilhados</h3><p>Conheça as acomodações e consulte as opções disponíveis para seu familiar.</p></article>
+          <article className="structure-card"><Leaf/><h3>Jardim e área externa</h3><p>Plantas, luz natural e espaços ao ar livre fazem parte do nosso recanto.</p></article>
+          <article className="structure-card"><Users/><h3>Áreas de convivência</h3><p>Sala de estar e ambientes cobertos para compartilhar momentos em companhia.</p></article>
+          <article className="structure-card"><CalendarDays/><h3>Conheça pessoalmente</h3><p>Combine uma visita para conhecer a casa e conversar sobre os cuidados e valores.</p></article>
         </div>
         <div className="gallery-cta"><Contact>Quero conhecer os ambientes</Contact></div>
       </div></section>
@@ -99,9 +117,10 @@ function Index() {
           <article className="review-card"><Stars/><blockquote>“Minha mãe está lá e adora, é super bem cuidada, as cuidadoras são muito atenciosas, pois minha mãe adora conversar. Super indico.”</blockquote><div className="review-author"><span className="avatar">MS</span><div><strong>Mayra Munhoz Soares</strong><small>Avaliação no Google</small></div></div></article>
         </div>
       </div></section>
-      <section id="visita" className="section container-wide visit-section"><div className="eyebrow"><Heart size={14}/> As portas estão abertas para você</div><h2>Venha sentir de perto<br/><em>o carinho do nosso recanto.</em></h2><p>Conheça nossa equipe, tire suas dúvidas e converse sobre os cuidados e valores. Será um prazer receber você e sua família.</p><Contact warm className="hero-cta">Quero agendar uma visita</Contact><div className="visit-address"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP</span></div></section>
+      <section id="duvidas" className="section faq-section"><div className="container-wide faq-layout"><div className="faq-heading"><div className="eyebrow">Uma decisão com mais tranquilidade</div><h2>Perguntas que merecem<br/><em>uma boa conversa.</em></h2><p>Respostas para as dúvidas das famílias.</p><Contact className="hero-cta">Tirar outra dúvida</Contact></div><div className="faq-list">{questions.map(item => <details key={item.question} className="faq-item"><summary>{item.question}<ChevronDown size={19}/></summary><p>{item.answer}</p></details>)}</div></div></section>
+      <section id="visita" className="section visit-section"><div className="container-wide visit-inner"><div className="eyebrow"><Heart size={14}/> Estamos aqui para ouvir você</div><h2>Vamos conversar<br/>sobre o seu familiar?</h2><p>Conte um pouco sobre quem você ama. Vamos ouvir suas necessidades, esclarecer suas dúvidas e conversar sobre como o Recanto Dona Vida pode acolher sua família.</p><Contact className="hero-cta">Conversar sobre meu familiar</Contact><div className="visit-address"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP</span></div></div></section>
     </main>
-    <footer className="site-footer"><div className="container-wide"><div className="footer-top"><div><div className="footer-brand">Recanto Dona Vida</div><div className="footer-tagline">Onde a vida é cuidada com carinho.</div></div><div className="footer-links"><a href={instagramUrl} target="_blank" rel="noopener noreferrer"><Instagram size={17}/> Nosso Instagram <ArrowRight size={13}/></a><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/> (11) 91095-0792</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Recanto Dona Vida. Todos os direitos reservados.</span><span>Feito para acolher. Pensado para cuidar.</span></div></div></footer>
-    <Button asChild variant="care" className="floating-whatsapp"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Conversar com o Recanto Dona Vida pelo WhatsApp" title="Converse pelo WhatsApp"><WhatsAppIcon/></a></Button>
+    <footer className="site-footer"><div className="container-wide"><div className="footer-top"><div><div className="footer-brand">Recanto Dona Vida</div><div className="footer-tagline">Onde a vida é cuidada com carinho.</div></div><div className="footer-links"><a href={instagramUrl} target="_blank" rel="noopener noreferrer"><Instagram size={17}/> Nosso Instagram <ArrowRight size={13}/></a><a href={whatsappUrl} onClick={openWhatsApp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/> (11) 91095-0792</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Recanto Dona Vida. Todos os direitos reservados.</span><span>Feito para acolher. Pensado para cuidar.</span></div></div></footer>
+    <Button asChild variant="care" className="floating-whatsapp"><a href={whatsappUrl} onClick={openWhatsApp} target="_blank" rel="noopener noreferrer" aria-label="Conversar com o Recanto Dona Vida pelo WhatsApp" title="Converse pelo WhatsApp"><WhatsAppIcon/></a></Button>
   </>;
 }
