@@ -1,24 +1,87 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { whatsappUrl, instagramUrl } from "@/lib/contact";
+import logo from "@/assets/recanto-logo.jpeg.asset.json";
+import team from "@/assets/recanto-equipe.png.asset.json";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({ meta: [
+    { title: "Recanto Dona Vida | Casa de repouso em São Paulo" },
+    { name: "description", content: "Onde a vida é cuidada com carinho. Conheça o Recanto Dona Vida: casa de repouso em São Paulo com proprietárias enfermeiras e equipe experiente. Agende uma visita." },
+    { property: "og:title", content: "Recanto Dona Vida | Onde a vida é cuidada com carinho" },
+    { property: "og:description", content: "Um lar acolhedor para quem você ama. Conheça nossa equipe e converse conosco para agendar uma visita à nossa casa de repouso em São Paulo." },
+    { property: "og:type", content: "website" },
+    { name: "twitter:card", content: "summary_large_image" },
+  ] }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+function WhatsAppIcon({ className = "" }: { className?: string }) {
+  return <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M20.5 11.8a8.6 8.6 0 0 1-12.7 7.5L3 20.7l1.4-4.6A8.6 8.6 0 1 1 20.5 11.8Z"/><path d="M8.1 7.7c.3-.5.7-.5 1-.1l1 1.7c.2.4-.1.8-.6 1.3.6 1.3 1.6 2.3 3 2.9.5-.6.8-.9 1.2-.7l1.7.8c.5.3.5.8.2 1.2-.7 1-1.8 1-3 .5-2.6-1-4.6-3-5.3-5.2-.3-.9.2-1.8.8-2.4Z"/></svg>;
+}
+function Contact({ children, warm = false, className = "" }: { children: React.ReactNode; warm?: boolean; className?: string }) {
+  return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
+}
+function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
+const nav = [{ href: "#sobre", label: "Nosso recanto" }, { href: "#cuidados", label: "Nossos cuidados" }, { href: "#equipe", label: "Nossa equipe" }, { href: "#depoimentos", label: "Depoimentos" }];
+
 function Index() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
+  const [menuOpen, setMenuOpen] = useState(false);
+  return <>
+    <header className="site-header">
+      <div className="container-wide header-inner">
+        <a className="brand" href="#inicio" aria-label="Recanto Dona Vida — início"><img src={logo.url} alt="Logotipo Recanto Dona Vida"/><span className="brand-name">Recanto Dona Vida<small>Casa de repouso para idosos</small></span></a>
+        <nav className="desktop-nav" aria-label="Navegação principal">{nav.map(item => <a key={item.href} href={item.href}>{item.label}</a>)}</nav>
+        <Contact className="contact-button header-contact">Agende uma visita</Contact>
+        <Button variant="navigation" size="icon" className="mobile-menu-button" aria-label={menuOpen ? "Fechar menu" : "Abrir menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X/> : <Menu/>}</Button>
+      </div>
+      {menuOpen && <nav className="mobile-nav" aria-label="Navegação celular">{nav.map(item => <a key={item.href} href={item.href} onClick={() => setMenuOpen(false)}>{item.label}</a>)}<Contact>Agende uma visita</Contact></nav>}
+    </header>
+    <main>
+      <section className="hero" id="inicio">
+        <img className="hero-photo" src={team.url} alt="Equipe do Recanto Dona Vida reunida em um ambiente acolhedor" fetchPriority="high"/>
+        <div className="container-wide hero-inner">
+          <div className="eyebrow"><Leaf size={15}/> Um lar para quem você ama</div>
+          <h1>Recanto<em>Dona Vida</em></h1>
+          <p className="hero-copy">Cuidado que acolhe. Carinho que faz sentir em casa. Um novo capítulo de vida, com a atenção e a tranquilidade que sua família merece.</p>
+          <Contact className="hero-cta">Venha conhecer nosso recanto</Contact>
+          <div className="hero-note"><Heart size={13}/> Vamos conversar sobre quem você ama?</div>
+        </div>
+        <div className="hero-label"><Heart size={14}/> Nossa equipe, nossa família.</div>
+      </section>
+      <div className="trust-band"><div className="container-wide trust-inner">
+        <div className="trust-item"><Stethoscope/><div><strong>Proprietárias enfermeiras</strong><span>Conhecimento e carinho lado a lado</span></div></div>
+        <div className="trust-item"><ShieldCheck/><div><strong>Mais de 10 anos de experiência</strong><span>Uma equipe que conhece o cuidar</span></div></div>
+        <div className="trust-item"><HeartHandshake/><div><strong>Acolhimento de verdade</strong><span>Cuidado com o olhar de uma família</span></div></div>
+      </div></div>
+      <section id="sobre" className="section container-wide about-grid">
+        <div className="about-title"><div className="eyebrow">Bem-vindo ao nosso recanto</div><h2>Onde a vida é cuidada<br/><em>com carinho.</em></h2></div>
+        <div className="about-copy"><p>Escolher um lar para quem você ama é uma decisão que pede confiança. No Recanto Dona Vida, acolhemos cada idoso com respeito à sua história, ao seu tempo e àquilo que o faz se sentir bem.</p><p>Somos uma Instituição de Longa Permanência para Idosos (ILPI), conduzida por proprietárias enfermeiras e uma equipe experiente. Aqui, o cuidado profissional se encontra com o afeto de um verdadeiro lar.</p><Button asChild variant="link" className="text-link p-0 h-auto"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer">Conheça de perto esse cuidado <ArrowRight size={16}/></a></Button></div>
+      </section>
+      <section id="cuidados" className="section care-section"><div className="container-wide">
+        <div className="section-heading"><div className="eyebrow">Carinho em cada detalhe</div><h2>O bem-estar de quem você ama,<br/><em>no centro de tudo.</em></h2><p>Mais do que acolher, cuidar com presença, sensibilidade e respeito.</p></div>
+        <div className="care-grid">
+          <article className="care-card"><div className="care-icon"><Stethoscope size={24}/></div><h3>Cuidado com experiência</h3><p>Proprietárias enfermeiras formadas e funcionárias com mais de 10 anos de experiência no cuidado de idosos. Conhecimento que inspira confiança.</p></article>
+          <article className="care-card"><div className="care-icon"><HeartHandshake size={24}/></div><h3>Atenção com afeto</h3><p>Um olhar atento para cada pessoa, acolhendo sua história e suas necessidades. Porque carinho, escuta e respeito também fazem parte do cuidar.</p></article>
+          <article className="care-card"><div className="care-icon"><Leaf size={24}/></div><h3>Aconchego de um lar</h3><p>Um lugar para criar vínculos e se sentir pertencente. Valorizamos a proximidade com as famílias e o cuidado que gostaríamos para os nossos.</p></article>
+        </div>
+      </div></section>
+      <section id="equipe" className="section container-wide team-grid">
+        <img className="team-photo" src={team.url} loading="lazy" alt="As cinco integrantes da equipe do Recanto Dona Vida juntas"/>
+        <div className="team-copy"><div className="eyebrow">Quem cuida, cuida com o coração</div><h2>Uma equipe.<br/><em>Muitos gestos de amor.</em></h2><p>O Recanto Dona Vida nasceu de uma história muito pessoal: uma das proprietárias buscava um lugar onde sua mãe, que vive com Alzheimer, pudesse ser acolhida com todo o carinho e a atenção que merecia.</p><p>Desse desejo nasceu o nosso recanto. O cuidado pensado para uma mãe se estendeu a cada idoso que faz parte da nossa casa.</p><div className="team-quote">“O cuidado que queremos para a nossa família é o cuidado que oferecemos à sua.”</div><p>Nossas profissionais unem experiência e afeto para que cada pessoa seja vista, respeitada e acolhida como parte da família.</p><Contact className="contact-button">Converse com a nossa equipe</Contact></div>
+      </section>
+      <section id="depoimentos" className="section reviews-section"><div className="container-wide">
+        <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><strong>5,0</strong><Stars/><span>2 avaliações no Google</span></div></div>
+        <div className="review-grid">
+          <article className="review-card"><Stars/><blockquote>“Depois de muita procura, finalmente encontrei um lugar onde posso deixar minha sogra com tranquilidade e sem preocupações.<br/><br/>A equipe é extremamente dedicada, atenciosa e carinhosa. É possível perceber o cuidado e o carinho com que tratam cada idoso, como se fossem membros da própria família.”</blockquote><div className="review-author"><span className="avatar">AB</span><div><strong>Aguinaldo Brito</strong><small>Trecho de avaliação no Google</small></div></div></article>
+          <article className="review-card"><Stars/><blockquote>“Minha mãe está lá e adora, é super bem cuidada, as cuidadoras são muito atenciosas, pois minha mãe adora conversar. Super indico.”</blockquote><div className="review-author"><span className="avatar">MS</span><div><strong>Mayra Munhoz Soares</strong><small>Avaliação no Google</small></div></div></article>
+        </div>
+      </div></section>
+      <section id="visita" className="section container-wide visit-section"><div className="eyebrow"><Heart size={14}/> As portas estão abertas para você</div><h2>Venha sentir de perto<br/><em>o carinho do nosso recanto.</em></h2><p>Conheça nossa equipe, tire suas dúvidas e converse sobre os cuidados e valores. Será um prazer receber você e sua família.</p><Contact warm className="hero-cta">Quero agendar uma visita</Contact><div className="visit-address"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP</span></div></section>
+    </main>
+    <footer className="site-footer"><div className="container-wide"><div className="footer-top"><div><div className="footer-brand">Recanto Dona Vida</div><div className="footer-tagline">Onde a vida é cuidada com carinho.</div></div><div className="footer-links"><a href={instagramUrl} target="_blank" rel="noopener noreferrer"><Instagram size={17}/> Nosso Instagram <ArrowRight size={13}/></a><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/> (11) 91095-0792</a></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} Recanto Dona Vida. Todos os direitos reservados.</span><span>Feito para acolher. Pensado para cuidar.</span></div></div></footer>
+    <Button asChild variant="care" className="floating-whatsapp"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Conversar com o Recanto Dona Vida pelo WhatsApp" title="Converse pelo WhatsApp"><WhatsAppIcon/></a></Button>
+  </>;
 }
