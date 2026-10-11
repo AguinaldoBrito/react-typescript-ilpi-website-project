@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address } from "@/lib/contact";
+import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
 import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
@@ -43,6 +43,17 @@ const questions = [
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    // Every external link (WhatsApp, Instagram, mapa) opens outside any frame.
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement | null)?.closest?.("a[href^='http']") as HTMLAnchorElement | null;
+      if (!a || a.origin === window.location.origin) return;
+      e.preventDefault();
+      openExternal(a.href);
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
   return <>
     <header className="site-header">
       <div className="container-wide header-inner">
@@ -117,7 +128,7 @@ function Index() {
         </div>
       </div></section>
       <section id="duvidas" className="section faq-section"><div className="container-wide faq-layout"><div className="faq-heading"><div className="eyebrow">Uma decisão com mais tranquilidade</div><h2>Perguntas que merecem<br/><em>uma boa conversa.</em></h2><p>Respostas para as dúvidas das famílias.</p><Contact className="hero-cta">Tirar outra dúvida</Contact></div><div className="faq-list">{questions.map(item => <details key={item.question} className="faq-item"><summary>{item.question}<ChevronDown size={19}/></summary><p>{item.answer}</p></details>)}</div></div></section>
-      <section id="visita" className="section visit-section"><div className="container-wide visit-inner"><div className="eyebrow"><Heart size={14}/> Estamos aqui para ouvir você</div><h2>Vamos conversar<br/>sobre o seu familiar?</h2><p>Conte um pouco sobre quem você ama. Vamos ouvir suas necessidades, esclarecer suas dúvidas e conversar sobre como o Recanto Dona Vida pode acolher sua família.</p><Contact className="hero-cta">Conversar sobre meu familiar</Contact><div className="visit-address"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP</span></div></div></section>
+      <section id="visita" className="section visit-section"><div className="container-wide visit-inner"><div className="eyebrow"><Heart size={14}/> Estamos aqui para ouvir você</div><h2>Vamos conversar<br/>sobre o seu familiar?</h2><p>Conte um pouco sobre quem você ama. Vamos ouvir suas necessidades, esclarecer suas dúvidas e conversar sobre como o Recanto Dona Vida pode acolher sua família.</p><Contact className="hero-cta">Conversar sobre meu familiar</Contact><a className="visit-address" href={mapsUrl} target="_blank" rel="noopener noreferrer" title="Abrir no mapa"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP · <u>Ver no mapa</u></span></a></div></section>
     </main>
     <footer className="site-footer"><div className="container-wide">
       <div className="footer-grid">
@@ -134,7 +145,7 @@ function Index() {
           <strong>Fale com a gente</strong>
           <a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon className="footer-icon"/> {phoneDisplay}</a>
           <a href={instagramUrl} target="_blank" rel="noopener noreferrer"><Instagram size={16}/> {instagramHandle}</a>
-          <span className="footer-address"><MapPin size={16}/> {address}</span>
+          <a className="footer-address" href={mapsUrl} target="_blank" rel="noopener noreferrer" title="Abrir no mapa"><MapPin size={16}/> <span>{address}<br/><u>Como chegar (abrir no mapa)</u></span></a>
           <span className="footer-note">Visitas com agendamento prévio.<br/>São Paulo — SP</span>
         </div>
       </div>
