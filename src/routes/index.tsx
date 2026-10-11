@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { whatsappUrl, instagramUrl, openWhatsApp } from "@/lib/contact";
+import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
 import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
@@ -29,17 +29,16 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
   return <svg className={className} width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><path d="M20.5 11.8a8.6 8.6 0 0 1-12.7 7.5L3 20.7l1.4-4.6A8.6 8.6 0 1 1 20.5 11.8Z"/><path d="M8.1 7.7c.3-.5.7-.5 1-.1l1 1.7c.2.4-.1.8-.6 1.3.6 1.3 1.6 2.3 3 2.9.5-.6.8-.9 1.2-.7l1.7.8c.5.3.5.8.2 1.2-.7 1-1.8 1-3 .5-2.6-1-4.6-3-5.3-5.2-.3-.9.2-1.8.8-2.4Z"/></svg>;
 }
 function Contact({ children, warm = false, className = "" }: { children: React.ReactNode; warm?: boolean; className?: string }) {
-  return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} onClick={openWhatsApp} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
+  return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
 }
 function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
 const nav = [{ href: "#inicio", label: "Início" }, { href: "#sobre", label: "Sobre" }, { href: "#cuidados", label: "Cuidados" }, { href: "#equipe", label: "Equipe" }, { href: "#ambientes", label: "Estrutura" }, { href: "#depoimentos", label: "Depoimentos" }, { href: "#duvidas", label: "Dúvidas" }];
 const questions = [
-  { question: "Como posso conhecer o Recanto Dona Vida?", answer: "Converse com nossa equipe pelo WhatsApp para combinar uma visita. Você poderá conhecer os ambientes, conversar pessoalmente e tirar suas dúvidas sobre o acolhimento do seu familiar." },
-  { question: "Quem são as responsáveis pelo cuidado?", answer: "As proprietárias são enfermeiras formadas, e nossas funcionárias têm mais de 10 anos de experiência no ramo. O cuidado une conhecimento profissional, atenção e respeito à história de cada pessoa." },
-  { question: "Meu familiar tem Alzheimer. Podemos conversar?", answer: "Sim. Nossa história começou com o desejo de uma das proprietárias de acolher sua mãe, que vive com Alzheimer. Conte à equipe sobre a condição e as necessidades do seu familiar para conversar sobre as possibilidades de acolhimento." },
-  { question: "A casa tem quartos individuais e compartilhados?", answer: "Sim, há ambientes individuais e compartilhados, apresentados nas fotos da nossa casa. Consulte a equipe sobre a disponibilidade e a acomodação mais adequada ao seu familiar." },
-  { question: "Quais são os valores e o que está incluído?", answer: "Converse diretamente com a equipe sobre os valores, os cuidados disponíveis e o que está incluído na hospedagem. Assim, você poderá avaliar as opções considerando as necessidades do seu familiar." },
-  { question: "Onde fica o Recanto Dona Vida?", answer: "Estamos na Rua Campo Comprido, 33, Vila Romero, São Paulo – SP, CEP 02469-120. Fale conosco para combinar sua visita." },
+  { question: "Vocês recebem idosos com Alzheimer ou demência?", answer: "Sim. O cuidado com Alzheimer e demências é uma das nossas especialidades: rotina previsível, estímulo cognitivo, atenção redobrada com segurança e equipe treinada para as diferentes fases da doença. Foi justamente buscando esse cuidado que o Recanto nasceu." },
+  { question: "Como faço para agendar uma visita?", answer: "É simples: fale com a gente pelo WhatsApp. Combinamos o melhor dia e horário, você conhece a casa, os quartos e as áreas de convivência, conversa com a equipe e tira todas as dúvidas antes de qualquer decisão." },
+  { question: "O que está incluso no valor mensal?", answer: "O valor depende do grau de dependência do idoso e do tipo de acomodação. Ele inclui moradia, alimentação, cuidados de rotina, enfermagem e atividades. Envie a situação do seu familiar pelo WhatsApp e explicamos exatamente o que está incluído, sem surpresas." },
+  { question: "Qual é o horário de visitas?", answer: "As visitas são agendadas para que o idoso mantenha a rotina de descanso e refeições. Basta combinar com a equipe pelo WhatsApp o horário que funcione melhor para a família." },
+  { question: "Como funciona a adaptação nos primeiros dias?", answer: "Os primeiros dias são acompanhados de perto pela equipe: apresentamos a casa, respeitamos os horários e hábitos que o idoso já tinha e mantemos a família informada. A maioria se adapta em poucos dias, e as famílias podem visitar para acompanhar esse momento." },
 ];
 
 function Index() {
