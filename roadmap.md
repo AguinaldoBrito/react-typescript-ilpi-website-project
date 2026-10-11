@@ -4,4 +4,4 @@
 - [x] Boas-vindas, sobre, cuidados e história da equipe.
 - [x] Depoimentos reais e rodapé com Instagram.
 - [x] Contatos pelo WhatsApp com mensagem pronta.
-- [ ] Conferir apresentação e contatos em celular e desktop.
+- [x] Conferir apresentação e contatos em celular e desktop.
