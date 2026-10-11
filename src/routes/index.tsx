@@ -5,6 +5,13 @@ import { Button } from "@/components/ui/button";
 import { whatsappUrl, instagramUrl } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
+import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
+import ambQuartos from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-2.jpeg.asset.json";
+import ambJardim from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-3.jpeg.asset.json";
+import ambSala from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-4.jpeg.asset.json";
+import ambConvivencia from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-5.jpeg.asset.json";
+import ambRefeicoes from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-6.jpeg.asset.json";
+import ambQuartoIndividual from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-7.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -25,7 +32,7 @@ function Contact({ children, warm = false, className = "" }: { children: React.R
   return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
 }
 function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
-const nav = [{ href: "#sobre", label: "Nosso recanto" }, { href: "#cuidados", label: "Nossos cuidados" }, { href: "#equipe", label: "Nossa equipe" }, { href: "#depoimentos", label: "Depoimentos" }];
+const nav = [{ href: "#sobre", label: "Nosso recanto" }, { href: "#cuidados", label: "Nossos cuidados" }, { href: "#ambientes", label: "Nossos ambientes" }, { href: "#equipe", label: "Nossa equipe" }, { href: "#depoimentos", label: "Depoimentos" }];
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -67,6 +74,19 @@ function Index() {
           <article className="care-card"><div className="care-icon"><HeartHandshake size={24}/></div><h3>Atenção com afeto</h3><p>Um olhar atento para cada pessoa, acolhendo sua história e suas necessidades. Porque carinho, escuta e respeito também fazem parte do cuidar.</p></article>
           <article className="care-card"><div className="care-icon"><Leaf size={24}/></div><h3>Aconchego de um lar</h3><p>Um lugar para criar vínculos e se sentir pertencente. Valorizamos a proximidade com as famílias e o cuidado que gostaríamos para os nossos.</p></article>
         </div>
+      </div></section>
+      <section id="ambientes" className="section gallery-section"><div className="container-wide">
+        <div className="section-heading"><div className="eyebrow">Um lar feito de detalhes</div><h2>Cada canto do nosso <em>recanto.</em></h2><p>Espaços pensados para convivência, descanso e bem-estar. Venha conhecer pessoalmente.</p></div>
+        <div className="gallery-grid">
+          <figure className="gallery-item"><img src={ambPatio.url} loading="lazy" alt="Pátio externo com plantas e luzes acesas ao entardecer"/><figcaption>Pátio ao entardecer</figcaption></figure>
+          <figure className="gallery-item"><img src={ambQuartos.url} loading="lazy" alt="Quarto compartilhado com camas brancas e aconchegantes"/><figcaption>Quartos aconchegantes</figcaption></figure>
+          <figure className="gallery-item"><img src={ambJardim.url} loading="lazy" alt="Jardim gramado com mesa e piscina para dias de sol"/><figcaption>Jardim com piscina</figcaption></figure>
+          <figure className="gallery-item"><img src={ambSala.url} loading="lazy" alt="Sala de estar com poltronas confortáveis"/><figcaption>Sala de estar</figcaption></figure>
+          <figure className="gallery-item"><img src={ambConvivencia.url} loading="lazy" alt="Área coberta de convivência ao lado da piscina"/><figcaption>Área de convivência</figcaption></figure>
+          <figure className="gallery-item"><img src={ambRefeicoes.url} loading="lazy" alt="Mesa de refeições na área coberta e jardim"/><figcaption>Refeições ao ar livre</figcaption></figure>
+          <figure className="gallery-item"><img src={ambQuartoIndividual.url} loading="lazy" alt="Quarto individual claro e silencioso"/><figcaption>Quarto individual</figcaption></figure>
+        </div>
+        <div className="gallery-cta"><Contact>Quero conhecer os ambientes</Contact></div>
       </div></section>
       <section id="equipe" className="section container-wide team-grid">
         <img className="team-photo" src={team.url} loading="lazy" alt="As cinco integrantes da equipe do Recanto Dona Vida juntas"/>
