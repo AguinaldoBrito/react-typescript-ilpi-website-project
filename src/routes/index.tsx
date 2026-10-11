@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
@@ -43,6 +43,17 @@ const questions = [
 
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    // Every external link (WhatsApp, Instagram, mapa) opens outside any frame.
+    const onClick = (e: MouseEvent) => {
+      const a = (e.target as HTMLElement | null)?.closest?.("a[href^='http']") as HTMLAnchorElement | null;
+      if (!a || a.origin === window.location.origin) return;
+      e.preventDefault();
+      openExternal(a.href);
+    };
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
   return <>
     <header className="site-header">
       <div className="container-wide header-inner">
