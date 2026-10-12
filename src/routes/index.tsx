@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/button";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
+import fachada from "@/assets/recanto-fachada.png.asset.json";
 import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
-import ambQuartos from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-2.jpeg.asset.json";
+import quartos1 from "@/assets/quartos-aconchegantes-1.jpeg.asset.json";
+import quartos2 from "@/assets/quartos-aconchegantes-2.jpeg.asset.json";
 import ambJardim from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-3.jpeg.asset.json";
 import ambSala from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-4.jpeg.asset.json";
 import ambConvivencia from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-5.jpeg.asset.json";
 import ambRefeicoes from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-6.jpeg.asset.json";
-import ambQuartoIndividual from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-7.jpeg.asset.json";
+import quartoIndividualNovo from "@/assets/quarto-individual-novo.jpeg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({ meta: [
@@ -67,7 +69,7 @@ function Index() {
     </header>
     <main>
       <section className="hero" id="inicio">
-        <img className="hero-photo" src={team.url} alt="Equipe do Recanto Dona Vida reunida em um ambiente acolhedor" fetchPriority="high"/>
+        <img className="hero-photo" src={fachada.url} alt="Fachada do Recanto Dona Vida com o nome da casa e as proprietárias" fetchPriority="high"/>
         <div className="container-wide hero-inner">
           <div className="eyebrow"><Leaf size={15}/> Um lar para quem você ama</div>
           <h1>Recanto<em>Dona Vida</em></h1>
