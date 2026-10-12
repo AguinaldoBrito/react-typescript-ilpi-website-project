@@ -134,6 +134,7 @@ a { text-decoration: none; }
 .reviews-google { display:flex; justify-content:center; margin-top:10px; }
 .review-card { background:var(--card); border-radius:8px; border:1px solid var(--border); padding:30px; display:flex; flex-direction:column; }
 .review-card blockquote { margin:20px 0 25px; color:var(--muted-foreground); font-size:14px; line-height:1.9; flex:1; }
+.review-no-comment { margin:20px 0 25px; color:var(--muted-foreground); font-size:14px; line-height:1.9; flex:1; font-style:italic; }
 .review-author { display:flex; align-items:center; gap:12px; }
 .avatar { width:39px; height:39px; display:grid; place-items:center; border-radius:50%; background:var(--accent); color:var(--primary); font-size:13px; }
 .review-author strong { font-weight:600; display:block; font-size:12px; overflow-wrap:anywhere; }
@@ -152,7 +153,7 @@ a { text-decoration: none; }
 .footer-brand { font-family:var(--font-heading); font-size:30px; }
 .footer-brand em { font-style:italic; color:var(--warm, #F2AC7E); }
 .footer-tagline { font-size:13px; line-height:1.65; opacity:.78; max-width:34ch; margin:12px 0 18px; }
-.footer-rating { display:flex; align-items:center; gap:10px; font-size:11px; font-weight:600; letter-spacing:1.2px; text-transform:uppercase; opacity:.9; }
+.footer-rating { display:flex; flex-wrap:wrap; align-items:center; gap:10px; font-size:11px; font-weight:600; letter-spacing:0; text-transform:uppercase; opacity:.9; }
 .footer-nav, .footer-contact { display:flex; flex-direction:column; gap:13px; font-size:13.5px; }
 .footer-nav strong, .footer-contact strong { font-family:var(--font-heading); font-size:15px; letter-spacing:2px; text-transform:uppercase; font-weight:600; margin-bottom:6px; opacity:.95; }
 .footer-nav a { opacity:.82; transition:opacity .2s; }
