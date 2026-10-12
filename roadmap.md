@@ -1,5 +1,9 @@
 # Recanto Dona Vida
 
+- [ ] Transcrever as oito novas avaliações reais: Google não disponibilizou os textos na consulta; aguardando imagens ou textos enviados pelo proprietário, com nomes, estrelas e nota média atual.
+- [x] Apresentar os depoimentos em carrossel no visual atual e atualizar o total para 10.
+- [x] Verificar navegação das avaliações e apresentação em telas pequenas e grandes.
+
 - [x] Aproximar a paleta da referência e ampliar os menus do cabeçalho.
 - [x] Acrescentar informações úteis e perguntas frequentes sem afirmar serviços não confirmados.
 - [x] Trocar o convite final por uma pergunta sobre o familiar.

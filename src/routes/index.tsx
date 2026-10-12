@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
@@ -33,7 +34,6 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 function Contact({ children, warm = false, className = "" }: { children: React.ReactNode; warm?: boolean; className?: string }) {
   return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
 }
-function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
 const nav = [{ href: "#inicio", label: "Início" }, { href: "#sobre", label: "Sobre" }, { href: "#cuidados", label: "Cuidados" }, { href: "#equipe", label: "Equipe" }, { href: "#ambientes", label: "Estrutura" }, { href: "#depoimentos", label: "Depoimentos" }, { href: "#duvidas", label: "Dúvidas" }];
 const questions = [
   { question: "Vocês recebem idosos com Alzheimer ou demência?", answer: "Sim. O cuidado com Alzheimer e demências é uma das nossas especialidades: rotina previsível, estímulo cognitivo, atenção redobrada com segurança e equipe treinada para as diferentes fases da doença. Foi justamente buscando esse cuidado que o Recanto nasceu." },
@@ -123,13 +123,7 @@ function Index() {
         <img className="team-photo" src={team.url} loading="lazy" alt="As cinco integrantes da equipe do Recanto Dona Vida juntas"/>
         <div className="team-copy"><div className="eyebrow">Quem cuida, cuida com o coração</div><h2>Uma equipe.<br/><em>Muitos gestos de amor.</em></h2><p>O Recanto Dona Vida nasceu de uma história muito pessoal: uma das proprietárias buscava um lugar onde sua mãe, que vive com Alzheimer, pudesse ser acolhida com todo o carinho e a atenção que merecia.</p><p>Desse desejo nasceu o nosso recanto. O cuidado pensado para uma mãe se estendeu a cada idoso que faz parte da nossa casa.</p><div className="team-quote">“O cuidado que queremos para a nossa família é o cuidado que oferecemos à sua.”</div><p>Nossas profissionais unem experiência e afeto para que cada pessoa seja vista, respeitada e acolhida como parte da família.</p><Contact className="contact-button">Converse com a nossa equipe</Contact></div>
       </section>
-      <section id="depoimentos" className="section reviews-section"><div className="container-wide">
-        <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><strong>5,0</strong><Stars/><span>2 avaliações no Google</span></div></div>
-        <div className="review-grid">
-          <article className="review-card"><Stars/><blockquote>“Depois de muita procura, finalmente encontrei um lugar onde posso deixar minha sogra com tranquilidade e sem preocupações.<br/><br/>A equipe é extremamente dedicada, atenciosa e carinhosa. É possível perceber o cuidado e o carinho com que tratam cada idoso, como se fossem membros da própria família.”</blockquote><div className="review-author"><span className="avatar">AB</span><div><strong>Aguinaldo Brito</strong><small>Trecho de avaliação no Google</small></div></div></article>
-          <article className="review-card"><Stars/><blockquote>“Minha mãe está lá e adora, é super bem cuidada, as cuidadoras são muito atenciosas, pois minha mãe adora conversar. Super indico.”</blockquote><div className="review-author"><span className="avatar">MS</span><div><strong>Mayra Munhoz Soares</strong><small>Avaliação no Google</small></div></div></article>
-        </div>
-      </div></section>
+      <Reviews />
       <section id="duvidas" className="section faq-section"><div className="container-wide faq-layout"><div className="faq-heading"><div className="eyebrow">Uma decisão com mais tranquilidade</div><h2>Perguntas que merecem<br/><em>uma boa conversa.</em></h2><p>Respostas para as dúvidas das famílias.</p><Contact className="hero-cta">Tirar outra dúvida</Contact></div><div className="faq-list">{questions.map(item => <details key={item.question} className="faq-item"><summary>{item.question}<ChevronDown size={19}/></summary><p>{item.answer}</p></details>)}</div></div></section>
       <section id="visita" className="section visit-section"><div className="container-wide visit-inner"><div className="eyebrow"><Heart size={14}/> Estamos aqui para ouvir você</div><h2>Vamos conversar<br/>sobre o seu familiar?</h2><p>Conte um pouco sobre quem você ama. Vamos ouvir suas necessidades, esclarecer suas dúvidas e conversar sobre como o Recanto Dona Vida pode acolher sua família.</p><Contact className="hero-cta">Conversar sobre meu familiar</Contact><a className="visit-address" href={mapsUrl} target="_blank" rel="noopener noreferrer" title="Abrir no mapa"><MapPin size={15}/><span>Rua Campo Comprido, 33 · Vila Romero<br/>São Paulo – SP · <u>Ver no mapa</u></span></a></div></section>
     </main>
@@ -138,7 +132,7 @@ function Index() {
         <div className="footer-about">
           <div className="footer-brand">Recanto <em>Dona Vida</em></div>
           <p className="footer-tagline">Onde a vida é cuidada com carinho. Casa de repouso familiar em São Paulo, com enfermeiras responsáveis e uma equipe experiente.</p>
-          <div className="footer-rating"><Stars/><span>5,0 no Google · 2 avaliações</span></div>
+          <div className="footer-rating"><span>10 avaliações no Google</span></div>
         </div>
         <nav className="footer-nav" aria-label="Navegação do rodapé">
           <strong>Navegue pelo site</strong>

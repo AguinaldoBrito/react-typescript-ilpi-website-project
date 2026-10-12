@@ -14,3 +14,4 @@
 - Open every external link (WhatsApp wa.me, Instagram, Google Maps) through openExternal in a new top-level tab, falling back to top-window navigation; these sites refuse to load inside frames such as the editor preview.
 - Use native details/summary for the anchored FAQ section; this provides accessible disclosure without a client-only dependency.
 - Use uploaded asset pointers for brand and team photography, and only publish testimonials transcribed from supplied evidence; this preserves authentic identity and avoids fabricated social proof.
+- Keep testimonial cards in the dedicated Reviews component using the existing Embla carousel, with manual navigation and no autoplay; this preserves readable, accessible reviews across screen sizes.
