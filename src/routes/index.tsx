@@ -175,5 +175,16 @@ function Index() {
       <div className="footer-bottom"><span>© {new Date().getFullYear()} Recanto Dona Vida · Todos os direitos reservados.</span><span>Feito com carinho em São Paulo.</span></div>
     </div></footer>
     <Button asChild variant="care" className="floating-whatsapp"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Conversar com o Recanto Dona Vida pelo WhatsApp" title="Converse pelo WhatsApp"><WhatsAppIcon/></a></Button>
+    {photo !== null && (
+      <div className="lightbox" role="dialog" aria-modal="true" aria-label={`Foto ampliada: ${gallery[photo].caption}`} onClick={() => setPhoto(null)}>
+        <button type="button" className="lightbox-close" onClick={() => setPhoto(null)} aria-label="Fechar foto"><X size={22}/></button>
+        <button type="button" className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); setPhoto((photo - 1 + gallery.length) % gallery.length); }} aria-label="Foto anterior"><ChevronLeft size={26}/></button>
+        <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
+          <img src={gallery[photo].src.url} alt={gallery[photo].alt}/>
+          <figcaption>{gallery[photo].caption}<span className="lightbox-count">{photo + 1} de {gallery.length}</span></figcaption>
+        </figure>
+        <button type="button" className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); setPhoto((photo + 1) % gallery.length); }} aria-label="Próxima foto"><ChevronRight size={26}/></button>
+      </div>
+    )}
   </>;
 }
