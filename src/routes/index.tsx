@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, MessageCircle, ChevronDown, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, MessageCircle, ChevronDown, ChevronLeft, ChevronRight, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
@@ -43,8 +43,31 @@ const questions = [
   { question: "Como funciona a adaptação nos primeiros dias?", answer: "Os primeiros dias são acompanhados de perto pela equipe: apresentamos a casa, respeitamos os horários e hábitos que o idoso já tinha e mantemos a família informada. A maioria se adapta em poucos dias, e as famílias podem visitar para acompanhar esse momento." },
 ];
 
+const gallery = [
+  { src: ambPatio, alt: "Pátio externo com plantas e luzes acesas ao entardecer", caption: "Pátio ao entardecer" },
+  { src: quartos1, alt: "Quarto compartilhado claro com três leitos, abajures e quadros de rosas", caption: "Quartos aconchegantes" },
+  { src: ambJardim, alt: "Jardim gramado com mesa e piscina para dias de sol", caption: "Jardim com piscina" },
+  { src: ambSala, alt: "Sala de estar com poltronas confortáveis", caption: "Sala de estar" },
+  { src: ambConvivencia, alt: "Área coberta de convivência ao lado da piscina", caption: "Área de convivência" },
+  { src: ambRefeicoes, alt: "Mesa de refeições na área coberta e jardim", caption: "Refeições ao ar livre" },
+  { src: quartos2, alt: "Quarto compartilhado com dois leitos, abajures e quadros de flores", caption: "Quartos compartilhados" },
+  { src: quartoIndividualNovo, alt: "Quarto individual claro com leito numerado e abajur aceso", caption: "Quarto individual" },
+];
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [photo, setPhoto] = useState<number | null>(null);
+  useEffect(() => {
+    if (photo === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPhoto(null);
+      if (e.key === "ArrowLeft") setPhoto((p) => p === null ? p : (p - 1 + gallery.length) % gallery.length);
+      if (e.key === "ArrowRight") setPhoto((p) => p === null ? p : (p + 1) % gallery.length);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [photo !== null]);
   useEffect(() => {
     // Every external link (WhatsApp, Instagram, mapa) opens outside any frame.
     const onClick = (e: MouseEvent) => {
@@ -105,14 +128,14 @@ function Index() {
       <section id="ambientes" className="section gallery-section"><div className="container-wide">
         <div className="section-heading"><div className="eyebrow">Um lar feito de detalhes</div><h2>Cada canto do nosso <em>recanto.</em></h2><p>Espaços pensados para convivência, descanso e bem-estar. Venha conhecer pessoalmente.</p></div>
         <div className="gallery-grid">
-          <figure className="gallery-item"><img src={ambPatio.url} loading="lazy" alt="Pátio externo com plantas e luzes acesas ao entardecer"/><figcaption>Pátio ao entardecer</figcaption></figure>
-          <figure className="gallery-item"><img src={quartos1.url} loading="lazy" alt="Quarto compartilhado claro com três leitos, abajures e quadros de rosas"/><figcaption>Quartos aconchegantes</figcaption></figure>
-          <figure className="gallery-item"><img src={ambJardim.url} loading="lazy" alt="Jardim gramado com mesa e piscina para dias de sol"/><figcaption>Jardim com piscina</figcaption></figure>
-          <figure className="gallery-item"><img src={ambSala.url} loading="lazy" alt="Sala de estar com poltronas confortáveis"/><figcaption>Sala de estar</figcaption></figure>
-          <figure className="gallery-item"><img src={ambConvivencia.url} loading="lazy" alt="Área coberta de convivência ao lado da piscina"/><figcaption>Área de convivência</figcaption></figure>
-          <figure className="gallery-item"><img src={ambRefeicoes.url} loading="lazy" alt="Mesa de refeições na área coberta e jardim"/><figcaption>Refeições ao ar livre</figcaption></figure>
-          <figure className="gallery-item"><img src={quartos2.url} loading="lazy" alt="Quarto compartilhado com dois leitos, abajures e quadros de flores"/><figcaption>Quartos compartilhados</figcaption></figure>
-          <figure className="gallery-item"><img src={quartoIndividualNovo.url} loading="lazy" alt="Quarto individual claro com leito numerado e abajur aceso"/><figcaption>Quarto individual</figcaption></figure>
+          {gallery.map((item, i) => (
+            <figure key={item.caption} className="gallery-item">
+              <button type="button" className="gallery-button" onClick={() => setPhoto(i)} aria-label={`Ampliar foto: ${item.caption}`}>
+                <img src={item.src.url} loading="lazy" alt={item.alt}/>
+              </button>
+              <figcaption>{item.caption}</figcaption>
+            </figure>
+          ))}
         </div>
         <div className="structure-grid">
           <article className="structure-card"><BedDouble/><h3>Quartos individuais e compartilhados</h3><p>Conheça as acomodações e consulte as opções disponíveis para seu familiar.</p></article>
@@ -152,5 +175,16 @@ function Index() {
       <div className="footer-bottom"><span>© {new Date().getFullYear()} Recanto Dona Vida · Todos os direitos reservados.</span><span>Feito com carinho em São Paulo.</span></div>
     </div></footer>
     <Button asChild variant="care" className="floating-whatsapp"><a href={whatsappUrl} target="_blank" rel="noopener noreferrer" aria-label="Conversar com o Recanto Dona Vida pelo WhatsApp" title="Converse pelo WhatsApp"><WhatsAppIcon/></a></Button>
+    {photo !== null && (() => { const item = gallery[photo]!; return (
+      <div className="lightbox" role="dialog" aria-modal="true" aria-label={`Foto ampliada: ${item.caption}`} onClick={() => setPhoto(null)}>
+        <button type="button" className="lightbox-close" onClick={() => setPhoto(null)} aria-label="Fechar foto"><X size={22}/></button>
+        <button type="button" className="lightbox-nav lightbox-prev" onClick={(e) => { e.stopPropagation(); setPhoto((photo - 1 + gallery.length) % gallery.length); }} aria-label="Foto anterior"><ChevronLeft size={26}/></button>
+        <figure className="lightbox-figure" onClick={(e) => e.stopPropagation()}>
+          <img src={item.src.url} alt={item.alt}/>
+          <figcaption>{item.caption}<span className="lightbox-count">{photo + 1} de {gallery.length}</span></figcaption>
+        </figure>
+        <button type="button" className="lightbox-nav lightbox-next" onClick={(e) => { e.stopPropagation(); setPhoto((photo + 1) % gallery.length); }} aria-label="Próxima foto"><ChevronRight size={26}/></button>
+      </div>
+    ); })()}
   </>;
 }
