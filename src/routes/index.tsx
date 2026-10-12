@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, Star, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
@@ -34,7 +34,6 @@ function WhatsAppIcon({ className = "" }: { className?: string }) {
 function Contact({ children, warm = false, className = "" }: { children: React.ReactNode; warm?: boolean; className?: string }) {
   return <Button asChild variant={warm ? "warm" : "care"} className={className}><a href={whatsappUrl} target="_blank" rel="noopener noreferrer"><WhatsAppIcon/>{children}<ArrowRight size={15}/></a></Button>;
 }
-function Stars() { return <span className="stars" aria-label="5 de 5 estrelas">{[1,2,3,4,5].map(n => <Star key={n}/>)}</span>; }
 const nav = [{ href: "#inicio", label: "Início" }, { href: "#sobre", label: "Sobre" }, { href: "#cuidados", label: "Cuidados" }, { href: "#equipe", label: "Equipe" }, { href: "#ambientes", label: "Estrutura" }, { href: "#depoimentos", label: "Depoimentos" }, { href: "#duvidas", label: "Dúvidas" }];
 const questions = [
   { question: "Vocês recebem idosos com Alzheimer ou demência?", answer: "Sim. O cuidado com Alzheimer e demências é uma das nossas especialidades: rotina previsível, estímulo cognitivo, atenção redobrada com segurança e equipe treinada para as diferentes fases da doença. Foi justamente buscando esse cuidado que o Recanto nasceu." },

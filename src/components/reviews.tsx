@@ -3,7 +3,7 @@ import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious, type CarouselApi } from "@/components/ui/carousel";
 
-const googleReviewsUrl = "https://www.google.com/maps?cid=12998679992587793117";
+const googleReviewsUrl = "https://www.google.com/maps?cid=12998677257205756637";
 
 const reviews = [
   { name: "Aguinaldo Brito", initials: "AB", stars: 5, excerpt: true, text: "Depois de muita procura, finalmente encontrei um lugar onde posso deixar minha sogra com tranquilidade e sem preocupações.\n\nA equipe é extremamente dedicada, atenciosa e carinhosa. É possível perceber o cuidado e o carinho com que tratam cada idoso, como se fossem membros da própria família." },
