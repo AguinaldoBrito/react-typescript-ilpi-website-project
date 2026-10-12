@@ -2,7 +2,8 @@
 
 - [x] Incluir as seis novas avaliações identificadas nas imagens (cinco com texto e uma apenas com estrelas), mantendo o carrossel atual.
 - [x] Restaurar nota 5,0 e cinco estrelas com total de 10 avaliações na seção e no rodapé, conforme evidência enviada.
-- [ ] Incluir as duas avaliações restantes: aguardando imagens ou textos do proprietário; três dos prints enviados mostram as mesmas avaliações.
+- [ ] Incluir a última avaliação restante: aguardando imagem ou texto do proprietário.
+- [x] Incluir o texto de Sandra e a avaliação de Amanda, com fotos reais de Henrique, Sandra e Amanda.
 - [x] Apresentar os depoimentos em carrossel no visual atual e atualizar o total para 10.
 - [x] Verificar navegação das avaliações e apresentação em telas pequenas e grandes.
 
