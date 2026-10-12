@@ -6,7 +6,7 @@ import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
 import logo from "@/assets/recanto-logo.jpeg.asset.json";
 import team from "@/assets/recanto-equipe.png.asset.json";
-import fachada from "@/assets/recanto-fachada.png.asset.json";
+import portao from "@/assets/recanto-portao-noturno.png.asset.json";
 import ambPatio from "@/assets/Foto-Ambientes-Recanto-Dona-Vida-1.jpeg.asset.json";
 import quartos1 from "@/assets/quartos-aconchegantes-1.jpeg.asset.json";
 import quartos2 from "@/assets/quartos-aconchegantes-2.jpeg.asset.json";
@@ -69,7 +69,7 @@ function Index() {
     </header>
     <main>
       <section className="hero" id="inicio">
-        <img className="hero-photo" src={fachada.url} alt="Fachada do Recanto Dona Vida com o nome da casa e as proprietárias" fetchPriority="high"/>
+        <img className="hero-photo" src={portao.url} alt="Portão do Recanto Dona Vida à noite, com a placa da casa" fetchPriority="high"/>
         <div className="container-wide hero-inner">
           <div className="eyebrow"><Leaf size={15}/> Um lar para quem você ama</div>
           <h1>Recanto<em>Dona Vida</em></h1>
