@@ -43,8 +43,31 @@ const questions = [
   { question: "Como funciona a adaptação nos primeiros dias?", answer: "Os primeiros dias são acompanhados de perto pela equipe: apresentamos a casa, respeitamos os horários e hábitos que o idoso já tinha e mantemos a família informada. A maioria se adapta em poucos dias, e as famílias podem visitar para acompanhar esse momento." },
 ];
 
+const gallery = [
+  { src: ambPatio, alt: "Pátio externo com plantas e luzes acesas ao entardecer", caption: "Pátio ao entardecer" },
+  { src: quartos1, alt: "Quarto compartilhado claro com três leitos, abajures e quadros de rosas", caption: "Quartos aconchegantes" },
+  { src: ambJardim, alt: "Jardim gramado com mesa e piscina para dias de sol", caption: "Jardim com piscina" },
+  { src: ambSala, alt: "Sala de estar com poltronas confortáveis", caption: "Sala de estar" },
+  { src: ambConvivencia, alt: "Área coberta de convivência ao lado da piscina", caption: "Área de convivência" },
+  { src: ambRefeicoes, alt: "Mesa de refeições na área coberta e jardim", caption: "Refeições ao ar livre" },
+  { src: quartos2, alt: "Quarto compartilhado com dois leitos, abajures e quadros de flores", caption: "Quartos compartilhados" },
+  { src: quartoIndividualNovo, alt: "Quarto individual claro com leito numerado e abajur aceso", caption: "Quarto individual" },
+];
+
 function Index() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [photo, setPhoto] = useState<number | null>(null);
+  useEffect(() => {
+    if (photo === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPhoto(null);
+      if (e.key === "ArrowLeft") setPhoto((p) => p === null ? p : (p - 1 + gallery.length) % gallery.length);
+      if (e.key === "ArrowRight") setPhoto((p) => p === null ? p : (p + 1) % gallery.length);
+    };
+    document.addEventListener("keydown", onKey);
+    document.body.style.overflow = "hidden";
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
+  }, [photo !== null]);
   useEffect(() => {
     // Every external link (WhatsApp, Instagram, mapa) opens outside any frame.
     const onClick = (e: MouseEvent) => {
