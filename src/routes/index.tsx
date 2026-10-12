@@ -70,6 +70,7 @@ function Index() {
     <main>
       <section className="hero" id="inicio">
         <img className="hero-photo" src={portao.url} alt="Portão do Recanto Dona Vida à noite, com a placa da casa" fetchPriority="high"/>
+        <div className="hero-photo-tint" aria-hidden="true"/>
         <div className="container-wide hero-inner">
           <div className="eyebrow"><Leaf size={15}/> Um lar para quem você ama</div>
           <h1>Recanto<em>Dona Vida</em></h1>
