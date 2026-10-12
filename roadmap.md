@@ -1,6 +1,6 @@
 # Recanto Dona Vida
 
-- [ ] Buscar e transcrever as oito novas avaliações reais do Google; não inventar textos.
+- [ ] Transcrever as oito novas avaliações reais: Google não disponibilizou os textos na consulta; aguardando imagens ou textos enviados pelo proprietário, com nomes, estrelas e nota média atual.
 - [x] Apresentar os depoimentos em carrossel no visual atual e atualizar o total para 10.
 - [x] Verificar navegação das avaliações e apresentação em telas pequenas e grandes.
 
