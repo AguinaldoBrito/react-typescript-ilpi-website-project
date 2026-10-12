@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, MessageCircle, ChevronDown, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
@@ -91,11 +91,9 @@ function Index() {
       <section id="cuidados" className="section care-section"><div className="container-wide">
         <div className="section-heading"><div className="eyebrow">Carinho em cada detalhe</div><h2>O bem-estar de quem você ama,<br/><em>no centro de tudo.</em></h2><p>Mais do que acolher, cuidar com presença, sensibilidade e respeito.</p></div>
         <div className="care-grid">
-          <article className="care-card"><div className="care-icon"><Stethoscope size={24}/></div><h3>Cuidado com experiência</h3><p>Proprietárias enfermeiras formadas e funcionárias com mais de 10 anos de experiência no cuidado de idosos. Conhecimento que inspira confiança.</p></article>
+          <article className="care-card"><div className="care-icon"><Stethoscope size={24}/></div><h3>Cuidado com experiência e dedicação</h3><p>Enfermeiras à frente da gestão e equipe com mais de 10 anos de experiência, oferecendo cuidado seguro, humanizado e acolhedor.</p></article>
           <article className="care-card"><div className="care-icon"><HeartHandshake size={24}/></div><h3>Atenção com afeto</h3><p>Um olhar atento para cada pessoa, acolhendo sua história e suas necessidades. Porque carinho, escuta e respeito também fazem parte do cuidar.</p></article>
           <article className="care-card"><div className="care-icon"><Leaf size={24}/></div><h3>Aconchego de um lar</h3><p>Um lugar para criar vínculos e se sentir pertencente. Valorizamos a proximidade com as famílias e o cuidado que gostaríamos para os nossos.</p></article>
-          <article className="care-card"><div className="care-icon"><Home size={24}/></div><h3>Uma história de família</h3><p>Nosso recanto nasceu do desejo de acolher uma mãe com Alzheimer. Uma história que inspira o olhar sensível para cada idoso e sua família.</p></article>
-          <article className="care-card"><div className="care-icon"><Users size={24}/></div><h3>Espaços para conviver</h3><p>Sala de estar, jardim e áreas de convivência compõem nossa casa. Ambientes para estar junto, criar vínculos e compartilhar momentos.</p></article>
           <article className="care-card"><div className="care-icon"><Stethoscope size={24}/></div><h3>Acompanhamento médico e nutricional</h3><p>Acompanhamento periódico com profissionais especializados, promovendo saúde, bem-estar e qualidade de vida aos nossos residentes.</p></article>
           <article className="care-card"><div className="care-icon"><UtensilsCrossed size={24}/></div><h3>6 refeições diárias</h3><p>Alimentação equilibrada e cuidadosamente planejada, respeitando as necessidades nutricionais e individuais de cada idoso.</p></article>
           <article className="care-card"><div className="care-icon"><HeartPulse size={24}/></div><h3>Enfermagem 24 horas</h3><p>Assistência contínua, com profissionais preparados para oferecer cuidado, segurança e atenção em todos os momentos.</p></article>
