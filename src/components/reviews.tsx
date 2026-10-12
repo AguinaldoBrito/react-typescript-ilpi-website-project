@@ -6,6 +6,12 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 const googleReviewsUrl = "https://www.google.com/maps?cid=12998677257205756637";
 
 const reviews = [
+  { name: "Henrique Fernandes Ramires", initials: "HR", stars: 5, excerpt: false, text: "Sou muito grato pelo carinho e cuidado que o Lar de Idosos Dona Vida tem com minha mãe e minha tia. Desde o início, me senti acolhido e seguro, sabendo que elas estão sendo tratadas com muito respeito, atenção e carinho. Toda a equipe é muito atenciosa e dedicada, o que nos sempre reconforta a cada visita." },
+  { name: "Tamires Leal", initials: "TL", stars: 5, excerpt: false, text: "Adorei o local. Bem organizado, limpo e aconchegante. As meninas são atenciosas, simpáticas, o atendimento foi bem esclarecedor." },
+  { name: "Sandra Regina Bernardo", initials: "SB", stars: 5, excerpt: false, text: "" },
+  { name: "Alcidney Souza", initials: "AS", stars: 5, excerpt: false, text: "Residencial com ótima procedência 👏🏻👏🏻👏🏻👏🏻" },
+  { name: "Ana Karolina", initials: "AK", stars: 5, excerpt: false, text: "Um Excelente Lugar , pessoas super amorosas , cuidadosas e muito atenciosas. ❤️" },
+  { name: "Aline Silva", initials: "AS", stars: 5, excerpt: false, text: "Uma ótima casa.... Pessoas muito atenciosa e gentil um carinho e cuidado com paciente nota 10000" },
   { name: "Aguinaldo Brito", initials: "AB", stars: 5, excerpt: true, text: "Depois de muita procura, finalmente encontrei um lugar onde posso deixar minha sogra com tranquilidade e sem preocupações.\n\nA equipe é extremamente dedicada, atenciosa e carinhosa. É possível perceber o cuidado e o carinho com que tratam cada idoso, como se fossem membros da própria família." },
   { name: "Mayra Munhoz Soares", initials: "MS", stars: 5, excerpt: false, text: "Minha mãe está lá e adora, é super bem cuidada, as cuidadoras são muito atenciosas, pois minha mãe adora conversar. Super indico." },
 ];
@@ -28,13 +34,13 @@ export function Reviews() {
   }, [api]);
 
   return <section id="depoimentos" className="section reviews-section"><div className="container-wide">
-    <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><span>10 avaliações no Google</span></div></div>
+    <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><strong>5,0</strong><span className="stars" aria-label="5 de 5 estrelas">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</span><span>10 avaliações no Google</span></div></div>
     <Carousel opts={{ align: "start", slidesToScroll: 1 }} setApi={setApi} aria-label="Depoimentos das famílias" className="reviews-carousel">
       <CarouselContent className="-ml-6 items-stretch">
         {reviews.map((review, index) => <CarouselItem key={review.name} className="pl-6 md:basis-1/2" aria-label={`${index + 1} de ${reviews.length}`}>
           <article className="review-card h-full">
             <span className="stars" aria-label={`${review.stars} de 5 estrelas`}>{Array.from({ length: review.stars }, (_, i) => <Star key={i} />)}</span>
-            <blockquote className="whitespace-pre-line">“{review.text}”</blockquote>
+            {review.text ? <blockquote className="whitespace-pre-line">“{review.text}”</blockquote> : <p className="review-no-comment">Avaliação sem comentário</p>}
             <div className="review-author"><span className="avatar shrink-0" aria-hidden="true">{review.initials}</span><div><strong>{review.name}</strong><small>{review.excerpt ? "Trecho de avaliação no Google" : "Avaliação no Google"}</small></div></div>
           </article>
         </CarouselItem>)}

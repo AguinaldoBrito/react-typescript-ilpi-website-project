@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
@@ -132,7 +132,7 @@ function Index() {
         <div className="footer-about">
           <div className="footer-brand">Recanto <em>Dona Vida</em></div>
           <p className="footer-tagline">Onde a vida é cuidada com carinho. Casa de repouso familiar em São Paulo, com enfermeiras responsáveis e uma equipe experiente.</p>
-          <div className="footer-rating"><span>10 avaliações no Google</span></div>
+          <div className="footer-rating"><span className="stars" aria-label="5 de 5 estrelas">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</span><span>5,0 no Google · 10 avaliações</span></div>
         </div>
         <nav className="footer-nav" aria-label="Navegação do rodapé">
           <strong>Navegue pelo site</strong>
