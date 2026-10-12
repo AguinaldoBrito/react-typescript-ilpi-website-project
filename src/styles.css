@@ -78,7 +78,7 @@ a { text-decoration: none; }
 .contact-button { min-height:46px; padding:12px 23px; font-size:12px; }
 .mobile-menu-button { display:none; }
 .hero { position:relative; overflow:hidden; min-height:560px; background:var(--hero-surface); }
-.hero-photo { position:absolute; inset:0 0 0 auto; width:63%; height:100%; object-fit:cover; object-position:64% center; }
+.hero-photo { position:absolute; inset:0 0 0 auto; width:63%; height:100%; object-fit:cover; object-position:center 38%; }
 .hero::after { content:''; position:absolute; inset:0; background:linear-gradient(90deg,var(--hero-surface) 0%,var(--hero-surface) 33%,color-mix(in oklch,var(--hero-surface) 94%,transparent) 40%,color-mix(in oklch,var(--hero-surface) 35%,transparent) 58%,transparent 75%); }
 .hero-inner { position:relative; z-index:1; padding-top:67px; padding-bottom:59px; }
 .eyebrow { display:flex; align-items:center; gap:9px; text-transform:uppercase; font-size:10px; letter-spacing:2px; font-weight:600; color:var(--primary); }
