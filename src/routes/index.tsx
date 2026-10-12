@@ -77,7 +77,7 @@ function Index() {
           <Contact className="hero-cta">Venha conhecer nosso recanto</Contact>
           <div className="hero-note"><Heart size={13}/> Vamos conversar sobre quem você ama?</div>
         </div>
-        <div className="hero-label"><Heart size={14}/> Nossa equipe, nossa família.</div>
+        <div className="hero-label"><Heart size={14}/> Conheça nossa casa, nossa família.</div>
       </section>
       <div className="trust-band"><div className="container-wide trust-inner">
         <div className="trust-item"><Stethoscope/><div><strong>Proprietárias enfermeiras</strong><span>Conhecimento e carinho lado a lado</span></div></div>
