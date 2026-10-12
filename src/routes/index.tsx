@@ -128,14 +128,14 @@ function Index() {
       <section id="ambientes" className="section gallery-section"><div className="container-wide">
         <div className="section-heading"><div className="eyebrow">Um lar feito de detalhes</div><h2>Cada canto do nosso <em>recanto.</em></h2><p>Espaços pensados para convivência, descanso e bem-estar. Venha conhecer pessoalmente.</p></div>
         <div className="gallery-grid">
-          <figure className="gallery-item"><img src={ambPatio.url} loading="lazy" alt="Pátio externo com plantas e luzes acesas ao entardecer"/><figcaption>Pátio ao entardecer</figcaption></figure>
-          <figure className="gallery-item"><img src={quartos1.url} loading="lazy" alt="Quarto compartilhado claro com três leitos, abajures e quadros de rosas"/><figcaption>Quartos aconchegantes</figcaption></figure>
-          <figure className="gallery-item"><img src={ambJardim.url} loading="lazy" alt="Jardim gramado com mesa e piscina para dias de sol"/><figcaption>Jardim com piscina</figcaption></figure>
-          <figure className="gallery-item"><img src={ambSala.url} loading="lazy" alt="Sala de estar com poltronas confortáveis"/><figcaption>Sala de estar</figcaption></figure>
-          <figure className="gallery-item"><img src={ambConvivencia.url} loading="lazy" alt="Área coberta de convivência ao lado da piscina"/><figcaption>Área de convivência</figcaption></figure>
-          <figure className="gallery-item"><img src={ambRefeicoes.url} loading="lazy" alt="Mesa de refeições na área coberta e jardim"/><figcaption>Refeições ao ar livre</figcaption></figure>
-          <figure className="gallery-item"><img src={quartos2.url} loading="lazy" alt="Quarto compartilhado com dois leitos, abajures e quadros de flores"/><figcaption>Quartos compartilhados</figcaption></figure>
-          <figure className="gallery-item"><img src={quartoIndividualNovo.url} loading="lazy" alt="Quarto individual claro com leito numerado e abajur aceso"/><figcaption>Quarto individual</figcaption></figure>
+          {gallery.map((item, i) => (
+            <figure key={item.caption} className="gallery-item">
+              <button type="button" className="gallery-button" onClick={() => setPhoto(i)} aria-label={`Ampliar foto: ${item.caption}`}>
+                <img src={item.src.url} loading="lazy" alt={item.alt}/>
+              </button>
+              <figcaption>{item.caption}</figcaption>
+            </figure>
+          ))}
         </div>
         <div className="structure-grid">
           <article className="structure-card"><BedDouble/><h3>Quartos individuais e compartilhados</h3><p>Conheça as acomodações e consulte as opções disponíveis para seu familiar.</p></article>
