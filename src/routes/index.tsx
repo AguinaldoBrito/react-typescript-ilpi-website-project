@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, Home, MessageCircle, ChevronDown, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
+import { ArrowRight, Heart, HeartHandshake, ShieldCheck, Stethoscope, Leaf, MapPin, Instagram, Menu, X, BedDouble, Users, CalendarDays, MessageCircle, ChevronDown, Star, UtensilsCrossed, HeartPulse, Puzzle, WashingMachine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Reviews } from "@/components/reviews";
 import { whatsappUrl, instagramUrl, instagramHandle, phoneDisplay, address, mapsUrl, openExternal } from "@/lib/contact";
