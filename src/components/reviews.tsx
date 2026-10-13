@@ -38,7 +38,7 @@ export function Reviews() {
   }, [api]);
 
   return <section id="depoimentos" className="section reviews-section"><div className="container-wide">
-    <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><strong>5,0</strong><span className="stars" aria-label="5 de 5 estrelas">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</span><span>+10 avaliações no Google</span></div></div>
+    <div className="section-heading"><div className="eyebrow">Confiança que vem das famílias</div><h2>Quem conhece, <em>sente o carinho.</em></h2><div className="rating"><strong>5,0</strong><span className="stars" aria-label="5 de 5 estrelas">{Array.from({ length: 5 }, (_, i) => <Star key={i} />)}</span><span>+15 avaliações no Google</span></div></div>
     <Carousel opts={{ align: "start", slidesToScroll: 1 }} setApi={setApi} aria-label="Depoimentos das famílias" className="reviews-carousel">
       <CarouselContent className="-ml-6 items-stretch">
         {reviews.map((review, index) => <CarouselItem key={review.name} className="pl-6 md:basis-1/2" aria-label={`${index + 1} de ${reviews.length}`}>
