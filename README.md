@@ -1,4 +1,4 @@
-# Recanto Dona Vida — Site Institucional
+# Recanto Dona Vida - Site Institucional
 
 Site institucional responsivo para uma ILPI (Instituição de Longa Permanência para Idosos) em São Paulo, com foco em conversão via WhatsApp, SEO e acessibilidade.
 
@@ -36,7 +36,3 @@ npm run dev
 ```sh
 npx vitest run
 ```
-
----
-
-Projeto construído com [Lovable](https://lovable.dev).
